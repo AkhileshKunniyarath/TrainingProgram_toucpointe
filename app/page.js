@@ -55,7 +55,7 @@ export default async function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }}
       />
-      <HomePageContent data={pageData} />
+      <HomePageContent data={page} brand={content.site?.brand} />
     </>
   );
 }

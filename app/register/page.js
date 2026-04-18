@@ -1,17 +1,17 @@
 import {
   ArrowLeft,
-  ArrowRight,
   BookOpen,
   CalendarDays,
-  CheckCircle2,
   Cpu,
   GraduationCap,
+  CheckCircle2,
   ShieldCheck,
   Sparkles,
   UserPlus,
 } from 'lucide-react';
 import Link from 'next/link';
 import { getSiteContent } from '../../lib/content-store';
+import RegistrationForm from '../../components/RegistrationForm';
 
 const statIconMap = {
   'book-open': BookOpen,
@@ -26,41 +26,6 @@ function parseKeywords(value) {
     .split(',')
     .map((keyword) => keyword.trim())
     .filter(Boolean);
-}
-
-function renderField(field) {
-  const commonProps = {
-    id: field.id,
-    className: `form-input registration-input${field.type === 'select' ? ' registration-select' : ''}${field.type === 'textarea' ? ' registration-textarea' : ''}`,
-    placeholder: field.placeholder,
-    required: Boolean(field.required),
-  };
-
-  if (field.type === 'select') {
-    return (
-      <select {...commonProps} defaultValue="">
-        <option value="">Select {field.label.toLowerCase()}</option>
-        {field.options?.map((option) => (
-          <option key={option} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
-    );
-  }
-
-  if (field.type === 'textarea') {
-    return <textarea {...commonProps} rows={field.rows || 4}></textarea>;
-  }
-
-  return (
-    <input
-      {...commonProps}
-      type={field.type || 'text'}
-      min={field.min}
-      max={field.max}
-    />
-  );
 }
 
 export async function generateMetadata() {
@@ -114,9 +79,10 @@ export default async function RegisterPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(registerSchema) }}
       />
-      <div className="registration-page-shell">
-        <div className="bg-glow-blob blob-top-right"></div>
-        <div className="bg-glow-blob blob-bottom-left" style={{ bottom: '8%', left: '8%' }}></div>
+      <div className="registration-page-shell" style={{ backgroundColor: '#fff', color: 'var(--text-primary)', minHeight: '100vh' }}>
+        {/* Subtle decorative blobs for the light theme */}
+        <div className="bg-glow-blob" style={{ position: 'fixed', top: '-10%', right: '-5%', width: '40vw', height: '40vw', background: 'radial-gradient(circle, rgba(79,70,229,0.05) 0%, transparent 70%)', zIndex: 0 }}></div>
+        <div className="bg-glow-blob" style={{ position: 'fixed', bottom: '-10%', left: '-5%', width: '40vw', height: '40vw', background: 'radial-gradient(circle, rgba(14,165,233,0.05) 0%, transparent 70%)', zIndex: 0 }}></div>
 
       <nav
         id="navbar"
@@ -126,132 +92,104 @@ export default async function RegisterPage() {
           top: 0,
           width: '100%',
           zIndex: 100,
+          background: 'rgba(255,255,255,0.8)',
+          backdropFilter: 'blur(12px)',
+          borderBottom: '1px solid var(--border-color)',
           transition: 'all 0.3s ease',
           padding: '1rem 0',
         }}
       >
-        <div className="container flex justify-between items-center">
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'var(--gradient-primary)', boxShadow: '0 4px 14px rgba(99,102,241,0.2)' }}>
-              <Cpu className="text-white" style={{ width: '20px', height: '20px' }} suppressHydrationWarning />
+        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', textDecoration: 'none' }}>
+            <div style={{
+              width: '2.5rem', height: '2.5rem', borderRadius: '0.75rem',
+              background: site.brand.logoPath ? 'transparent' : 'var(--gradient-brand)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              boxShadow: site.brand.logoPath ? 'none' : '0 4px 12px rgba(79,70,229,0.2)',
+              flexShrink: 0
+            }}>
+              {site.brand.logoPath ? (
+                <img src={site.brand.logoPath} alt="Logo" style={{ width: '100%', height: '100%', borderRadius: 'inherit', objectFit: 'cover' }} />
+              ) : (
+                <Cpu className="text-white" style={{ width: '20px', height: '20px' }} suppressHydrationWarning />
+              )}
             </div>
-            <span className="font-bold text-xl text-white" style={{ letterSpacing: '-0.05em' }}>
+            <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.2rem', letterSpacing: '-0.04em', color: 'var(--text-primary)' }}>
               {site.brand.logoTextPrimary}
-              <span style={{ color: 'var(--primary-light)' }}>{site.brand.logoTextAccent}</span>
+              <span style={{ background: 'var(--gradient-brand)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>
+                {site.brand.logoTextAccent}
+              </span>
             </span>
           </Link>
-          <div className="desktop-menu" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-            <Link href={page.nav.backHref} className="nav-link" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+          <div className="desktop-menu">
+            <Link href={page.nav.backHref} className="nav-link" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--text-secondary)', fontWeight: 600, fontSize: '0.9rem' }}>
               <ArrowLeft suppressHydrationWarning style={{ width: '16px', height: '16px' }} /> {page.nav.backLabel}
             </Link>
           </div>
         </div>
       </nav>
 
-        <main className="registration-main">
+        <main className="registration-main" style={{ paddingTop: '8rem', paddingBottom: '6rem', position: 'relative', zIndex: 1 }}>
         <div className="container registration-layout">
           <section className="registration-intro animate-fade-in">
-            <div className="registration-badge">
-              <span>{page.intro.badge}</span>
+            <div style={{ display: 'inline-flex', padding: '0.4rem 1rem', background: 'var(--primary-subtle)', borderRadius: 9999, color: 'var(--primary)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
+              {page.intro.badge}
             </div>
-            <h1 className="registration-title">{page.intro.title}</h1>
-            <p className="registration-copy">{page.intro.description}</p>
+            <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: 'var(--text-primary)', marginBottom: '1.5rem', lineHeight: 1.1 }}>{page.intro.title}</h1>
+            <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '2.5rem' }}>{page.intro.description}</p>
 
-            <div className="registration-highlight-list">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '3rem' }}>
               {page.intro.highlights.map((item) => (
-                <div key={item} className="registration-highlight-item">
-                  <CheckCircle2 suppressHydrationWarning style={{ width: '18px', height: '18px' }} />
+                <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-secondary)', fontWeight: 500 }}>
+                  <div style={{ color: 'var(--success)', display: 'flex' }}>
+                    <CheckCircle2 suppressHydrationWarning style={{ width: '20px', height: '20px' }} />
+                  </div>
                   <span>{item}</span>
                 </div>
               ))}
             </div>
 
-            <div className="registration-stat-row">
+            <div className="registration-stats-grid">
               {page.intro.stats.map((stat) => {
                 const Icon = statIconMap[stat.icon] || BookOpen;
 
                 return (
-                  <div key={stat.title} className="registration-stat-card">
-                    <div className="registration-stat-icon">
-                      <Icon suppressHydrationWarning />
+                  <div key={stat.title} style={{ padding: '1.25rem', background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '1.25rem', boxShadow: 'var(--shadow-sm)' }}>
+                    <div style={{ width: '2rem', height: '2rem', borderRadius: '0.5rem', background: 'var(--primary-subtle)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
+                      <Icon suppressHydrationWarning style={{ width: '18px', height: '18px' }} />
                     </div>
-                    <strong>{stat.title}</strong>
-                    <span>{stat.description}</span>
+                    <strong style={{ display: 'block', fontSize: '0.9rem', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>{stat.title}</strong>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{stat.description}</span>
                   </div>
                 );
               })}
             </div>
           </section>
 
-          <section
-            className="glass-card animate-fade-in registration-form-card"
-            style={{
-              border: '1px solid rgba(99,102,241,0.35)',
-              boxShadow: '0 24px 70px rgba(0,0,0,0.45)',
-              background: 'linear-gradient(180deg, rgba(15,23,42,0.92) 0%, rgba(9,14,24,0.9) 100%)',
-            }}
-          >
-            <div className="registration-form-header">
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center" style={{ background: 'var(--gradient-primary)', boxShadow: '0 10px 30px rgba(99,102,241,0.3)' }}>
-                <UserPlus suppressHydrationWarning className="text-white" style={{ width: '30px', height: '30px' }} />
+          <section className="registration-form-card animate-fade-in">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', marginBottom: '2.5rem' }}>
+              <div style={{ width: '3.5rem', height: '3.5rem', borderRadius: '1rem', background: 'var(--gradient-brand)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 20px rgba(79,70,229,0.2)' }}>
+                <UserPlus suppressHydrationWarning className="text-white" style={{ width: '24px', height: '24px' }} />
               </div>
               <div>
-                <p className="registration-eyebrow">{page.form.eyebrow}</p>
-                <h2 className="registration-form-title">{page.form.title}</h2>
-                <p className="text-muted">{page.form.description}</p>
+                <p style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--primary)', marginBottom: '0.25rem' }}>{page.form.eyebrow}</p>
+                <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-primary)', margin: 0 }}>{page.form.title}</h2>
               </div>
             </div>
 
-            <form className="registration-form-grid">
-              {page.form.sections.map((section) => (
-                <div key={section.title} className="registration-section">
-                  <div className="registration-section-heading">
-                    <h3>{section.title}</h3>
-                    <p className="text-muted">{section.description}</p>
-                  </div>
-                  <div className="registration-fields two-column-fields">
-                    {section.fields.map((field) => (
-                      <div
-                        key={field.id}
-                        className={`registration-field${field.fullWidth ? ' full-width-field' : ''}`}
-                      >
-                        <label htmlFor={field.id}>{field.label}</label>
-                        {renderField(field)}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-
-              <div className="registration-commitments">
-                {page.form.commitments.map((commitment, index) => {
-                  const Icon = commitmentIcons[index] || CheckCircle2;
-
-                  return (
-                    <div key={commitment} className="registration-commitment-item">
-                      <Icon suppressHydrationWarning style={{ width: '18px', height: '18px' }} />
-                      <span>{commitment}</span>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <button type="submit" className="btn btn-primary registration-submit">
-                {page.form.submitLabel}{' '}
-                <ArrowRight suppressHydrationWarning style={{ width: '18px', height: '18px' }} />
-              </button>
-              <p className="text-xs text-center text-muted" style={{ lineHeight: '1.6' }}>
-                By registering, you agree to our{' '}
-                <a href={site.legal.termsHref} style={{ color: 'var(--primary-light)' }}>
-                  {site.legal.termsLabel}
-                </a>{' '}
-                and{' '}
-                <a href={site.legal.privacyHref} style={{ color: 'var(--primary-light)' }}>
-                  {site.legal.privacyLabel}
-                </a>
-                .
-              </p>
-            </form>
+            <RegistrationForm page={page} />
+            
+            <p style={{ fontSize: '0.75rem', textAlign: 'center', color: 'var(--text-muted)', lineHeight: '1.6', marginTop: '2rem' }}>
+              By enrolling, you agree to our{' '}
+              <a href={site.legal.termsHref} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>
+                {site.legal.termsLabel}
+              </a>{' '}
+              and{' '}
+              <a href={site.legal.privacyHref} style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>
+                {site.legal.privacyLabel}
+              </a>
+              .
+            </p>
           </section>
         </div>
         </main>

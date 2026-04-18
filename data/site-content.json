@@ -3,16 +3,17 @@
     "brand": {
       "name": "Touchpointe.digital",
       "logoTextPrimary": "Touchpointe",
-      "logoTextAccent": ".digital"
+      "logoTextAccent": ".digital",
+      "logoPath": "/site-logo.jpeg"
     },
     "seo": {
-      "siteTitle": "TouchPointe Digital",
-      "siteDescription": "Training programs, digital learning, and tech-focused growth opportunities.",
-      "siteKeywords": "AI training, digital marketing training, cybersecurity training, tech bootcamp, TouchPointe Digital",
-      "homeKeywords": "AI training for students, digital skills bootcamp, cybersecurity basics, TouchPointe Digital homepage",
-      "trainingKeywords": "AI training program, Hatti AI, AI skills, automation training, digital transformation course",
-      "syllabusKeywords": "AI syllabus, training curriculum, AI course modules, digital marketing syllabus",
-      "registerKeywords": "register for AI training, enroll in tech bootcamp, TouchPointe registration",
+      "siteTitle": "TouchPointe Digital - AI Agents Workshop",
+      "siteDescription": "A 2-day hands-on workshop for Class 8, 9 & 10 students in Kerala to master AI Agents and Prompt Engineering.",
+      "siteKeywords": "AI Agents Workshop, Kerala Students AI, Class 8 AI, Class 9 AI, Class 10 AI, Prompt Engineering for kids, TouchPointe Digital",
+      "homeKeywords": "AI workshop Kerala, student AI training, AI Agents Touchpointe",
+      "trainingKeywords": "AI Agents Workshop, Hatti AI, Junior Journalist AI Project, Student AI Skills",
+      "syllabusKeywords": "AI Agents Syllabus, 2-day AI workshop curriculum, Class 8-10 AI course",
+      "registerKeywords": "register for AI Agents Workshop, student AI enrollment",
       "defaultOgImage": "/site-logo.jpeg",
       "googleSiteVerification": ""
     },
@@ -22,7 +23,7 @@
     },
     "contact": {
       "email": "contact@touchpointe.digital",
-      "phone": "+91 75580999003"
+      "phone": "+91 755 809 9003"
     },
     "legal": {
       "privacyLabel": "Privacy Policy",
@@ -50,420 +51,258 @@
   },
   "pages": {
     "index": {
-      "title": "Touchpointe.digital | Advanced Tech Training",
-      "heroBadge": "Accelerate Your Tech Journey",
-      "heroHeading": "Empowering Futures with",
-      "heroHeadingHighlight": "Advanced Tech Training",
-      "heroSubtitle": "Transforming businesses and launching student careers in AI, Cybersecurity, and Digital Marketing. Don't get left behind in the digital age.",
-      "heroCtaBusiness": "For Businesses",
-      "heroCtaStudents": "For Students",
-      "heroBgImage": "/hero-bg.png",
+      "title": "Touchpointe.digital | AI Agents Workshop for Students",
+      "heroBadge": "Class 8, 9 & 10 Students in Kerala",
+      "heroHeading": "Master the Future with the",
+      "heroHeadingHighlight": "AI Agents Workshop",
+      "heroSubtitle": "A 2-day hands-on journey where students build their first AI-powered mini-projects. No prior coding experience needed.",
+      "heroCtaBusiness": "Workshop Syllabus",
+      "heroCtaStudents": "Register Now",
+      "heroBgImage": "/hero_ai_graphic.png",
       "stats": [
         {
-          "value": "95%",
-          "label": "Career Placement Rate",
-          "icon": "trending-up",
+          "value": "2 Days",
+          "label": "Intensive Learning",
+          "icon": "calendar",
           "tone": "indigo"
         },
         {
-          "value": "500+",
-          "label": "Businesses Protected",
-          "icon": "shield-check",
+          "value": "100%",
+          "label": "Hands-on Practical",
+          "icon": "zap",
           "tone": "cyan"
         },
         {
-          "value": "10k+",
-          "label": "Students Trained",
-          "icon": "users",
+          "value": "Level",
+          "label": "Beginner Friendly",
+          "icon": "book-open",
           "tone": "pink"
         }
       ],
       "whySection": {
-        "heading": "Why Tech Training is",
-        "headingHighlight": "Mandatory",
-        "subtitle": "The digital landscape is evolving rapidly. Staying stagnant means falling behind.",
+        "heading": "Why AI Training is",
+        "headingHighlight": "Essential",
+        "subtitle": "AI isn't just coming; it's already here. Students who master it early lead the next generation.",
         "points": [
           {
-            "icon": "trending-down",
-            "tone": "red",
-            "title": "Stop Losing Money to Agencies",
-            "description": "Small and medium businesses bleed capital paying digital marketing agencies without understanding the metrics. Bring the knowledge in-house to take control of your growth and ROI."
-          },
-          {
-            "icon": "shield-alert",
+            "icon": "cpu",
             "tone": "indigo",
-            "title": "Prevent Devastating Breaches",
-            "description": "Cybersecurity is no longer a luxury for the enterprise. 60% of small businesses close within 6 months of a cyber attack. Train your team to build an impenetrable defense line."
+            "title": "Think Like a Creator",
+            "description": "Don't just use apps; understand how the 'brain' behind them works. Learn to build with AI Agents that don't just chat, but act."
           },
           {
-            "icon": "cpu",
+            "icon": "trending-up",
             "tone": "cyan",
-            "title": "The AI Revolution is Here",
-            "description": "Artificial Intelligence isn't coming; it's already reshaping industries. Businesses utilizing AI are automating tasks and scaling 3x faster than those clinging to legacy methods."
-          }
-        ],
-        "costBoxTitle": "The High Cost of Inaction",
-        "costItems": [
-          "Wasted ad spend on poor marketing campaigns",
-          "Vulnerability to ransomware and data extortion",
-          "Inefficient manual processes draining resources"
-        ],
-        "costCta": "Training empowers you to take control."
-      },
-      "smbSection": {
-        "badge": "Enterprise Grade",
-        "heading": "Business",
-        "headingHighlight": "Training Programs",
-        "subtitle": "Upskill your current workforce to protect assets, automate processes, and drive revenue. Stop relying entirely on expensive external agencies.",
-        "programs": [
-          {
-            "icon": "megaphone",
-            "title": "Digital Marketing for SMBs",
-            "formats": "1-Day Workshop • 1-Week Intensive",
-            "description": "Learn exactly how digital marketing works so you can stop bleeding money to agencies that deliver zero results. Understand metrics, run your own ads, and own your customer acquisition.",
-            "featured": false
-          },
-          {
-            "icon": "cpu",
-            "title": "AI Integration & Automation",
-            "formats": "1-Day Workshop • 1-Week Intensive",
-            "description": "Stop doing manual work. We train your staff to implement Generative AI, automate workflows, and build customGPTs to save thousands of hours per year.",
-            "featured": true,
-            "featuredLabel": "Most Popular"
-          },
-          {
-            "icon": "shield-check",
-            "title": "Cybersecurity Fundamentals",
-            "formats": "1-Day Workshop • 1-Week Intensive",
-            "description": "Build a human firewall. Train your employees to identify phishing, secure endpoints, and comply with basic security standards to prevent devastating breaches and data loss.",
-            "featured": false
-          }
-        ]
-      },
-      "studentsSection": {
-        "badge": "Career Builder",
-        "heading": "Student",
-        "headingHighlight": "Career Launchpad",
-        "subtitle": "Enter the workforce with high-demand, practical skills that companies are desperate to hire for right now.",
-        "featuredProgram": {
-          "badge": "Featured Bootcamp",
-          "title": "10-Day Future Innovators Masterclass",
-          "format": "10-Day Intensive",
-          "ageRequirement": "Age 14+",
-          "description": "A comprehensive, hands-on journey combining AI Foundations, Prompt Engineering, and Digital Marketing. Build a startup concept and launch your first AI-integrated website in just two weeks!",
-          "ctaLabel": "View Full Syllabus",
-          "ctaHref": "/syllabus",
-          "enrollLabel": "Enroll for Next Batch",
-          "image": "/hero_ai_graphic.png"
-        },
-        "singleTrackLabel": "Or browse our specialized single-track courses:",
-        "programs": [
-          {
-            "icon": "cpu",
-            "tone": "cyan",
-            "badge": "High Demand",
-            "title": "AI Engineering & Prompting",
-            "formats": "1-Day Masterclass • 1-Week Bootcamp • 12-Week",
-            "description": "Master LLMs, prompt engineering, and AI tool integration. Become the AI specialist companies need to build their next-generation applications.",
-            "ctaLabel": "Apply Now"
-          },
-          {
-            "icon": "megaphone",
-            "tone": "indigo",
-            "badge": "Creative",
-            "title": "Modern Digital Marketing",
-            "formats": "1-Day Masterclass • 1-Week Bootcamp • 10-Week",
-            "description": "Skip the theory. Learn performance marketing, SEO, social algorithms, and conversion rate optimization by spending real budgets on real campaigns.",
-            "ctaLabel": "Apply Now"
+            "title": "Future-Proof Careers",
+            "description": "Every job in the future will involve AI. From medicine to art, being an 'AI Power User' is the most competitive skill today."
           },
           {
             "icon": "shield-check",
             "tone": "pink",
-            "badge": "High Salary",
-            "title": "Cybersecurity Analyst",
-            "formats": "1-Day Masterclass • 1-Week Bootcamp • 16-Week",
-            "description": "Learn network defense, threat analysis, and ethical hacking. Prepare for industry-standard certifications (CompTIA Security+) and land your first SOC role.",
-            "ctaLabel": "Apply Now"
+            "title": "Responsible Tech",
+            "description": "Understand the ethics, the risks of deepfakes, and how to use AI safely to help society rather than mislead."
+          }
+        ],
+        "costBoxTitle": "Learning Outcomes",
+        "costItems": [
+          "Understand Chatbots vs. AI Agents",
+          "Master CRISP Prompt Engineering",
+          "Complete a 'Junior Journalist' AI Project",
+          "Explore growing AI career paths"
+        ],
+        "costCta": "Empowering students to be AI Leaders."
+      },
+      "studentsSection": {
+        "badge": "2-Day Workshop",
+        "heading": "Our Flagship",
+        "headingHighlight": "Programme",
+        "subtitle": "Specifically designed for Class 8, 9 & 10 students in Kerala.",
+        "featuredProgram": {
+          "badge": "Enrolling Now",
+          "title": "AI AGENTS WORKSHOP",
+          "format": "2-Day Intensive (4hrs/day)",
+          "ageRequirement": "Class 8, 9 & 10",
+          "description": "Beginner level workshop available in English & Malayalam. Students use their smartphones to learn prompt engineering, research automation, and creative AI tools.",
+          "ctaLabel": "View Full Syllabus",
+          "ctaHref": "/syllabus",
+          "enrollLabel": "Register for Workshop",
+          "image": "/hero_ai_graphic.png"
+        },
+        "singleTrackLabel": "Included in the Workshop:",
+        "programs": [
+          {
+            "icon": "message-square",
+            "tone": "cyan",
+            "badge": "Day 1",
+            "title": "Foundations & Prompting",
+            "formats": "Intro to AI • Chatbots vs Agents",
+            "description": "Learn the CRISP framework and the 'Robot Chef' analogy. Practice talking to AI to get perfect results for school tasks.",
+            "ctaLabel": "Syllabus"
+          },
+          {
+            "icon": "sparkles",
+            "tone": "indigo",
+            "badge": "Day 2",
+            "title": "Hands-On Building",
+            "formats": "Mini Projects • Creative AI",
+            "description": "Become a Junior Journalist. Research, write, and generate artwork for a news report using tools like Gemini and Firefly.",
+            "ctaLabel": "Syllabus"
+          },
+          {
+            "icon": "briefcase",
+            "tone": "pink",
+            "badge": "Expertise",
+            "title": "Ethics & Careers",
+            "formats": "Responsible AI • Future Jobs",
+            "description": "Deepfakes, privacy, and career paths like Prompt Engineering or AI Healthcare within the Kerala ecosystem.",
+            "ctaLabel": "Syllabus"
           }
         ]
       },
       "footer": {
-        "tagline": "Transforming businesses and launching careers through advanced training in AI, Cybersecurity, and Digital Marketing.",
-        "registrationBadge": "Registered under India Startup Mission",
+        "tagline": "Empowering Class 8, 9 & 10 students in Kerala to lead the AI revolution through hands-on Agent workshops.",
+        "registrationBadge": "Touchpointe.digital Training Initiative",
         "copyright": "© 2026 Touchpointe.digital. All rights reserved."
       }
     },
     "syllabus": {
-      "title": "Program Syllabus | Touchpointe.digital",
-      "badge": "Comprehensive 10-Day Masterclass",
-      "heading": "Official",
-      "headingHighlight": "Syllabus",
-      "subtitle": "Complete breakdown of our combined AI, Automation, and Digital Marketing curriculum.",
+      "title": "Workshop Syllabus | AI Agents Workshop",
+      "badge": "Class 8, 9 & 10 Students",
+      "heading": "AI Agents",
+      "headingHighlight": "Workshop",
+      "subtitle": "A hands-on 2-day journey into the world of Artificial Intelligence and AI Agents. Designed for students in Kerala.",
       "week1": {
-        "heading": "Week 1: AI & Automation Foundations",
+        "heading": "Day 1: Understanding AI & AI Agents",
         "days": [
           {
-            "title": "Day 1: What is AI? (The Magic Behind the Screen)",
+            "title": "Session 1: What is AI? (9:10 AM - 10:00 AM)",
             "slots": [
               {
-                "time": "0:00 - 0:30",
-                "heading": "Introduction: What is AI?",
-                "detail": "Use the \"AI Camera\" or \"YouTube Recommendations\" example. Explain that AI is just a computer program that learns from patterns."
+                "time": "9:00 - 9:10",
+                "heading": "Welcome & Intro:",
+                "detail": "Ice-breaker activity: 'Is this AI?'. Debate on Google Maps, calculators, and autocorrect."
               },
               {
-                "time": "0:30 - 1:00",
-                "heading": "Game Time:",
-                "detail": "Use Google Quick, Draw! to show how AI recognizes drawings. Discuss how it \"learned\" from millions of other sketches."
-              },
-              {
-                "time": "1:00 - 1:15",
-                "heading": "Break",
-                "detail": "",
-                "isBreak": true
-              },
-              {
-                "time": "1:15 - 2:00",
-                "heading": "AI Hunt:",
-                "detail": "Group activity. Find 5 things in a student's daily life (Instagram filters, Siri, Google Translate) that use AI."
+                "time": "9:10 - 10:00",
+                "heading": "The AI Brain:",
+                "detail": "Explain AI as systems that learn patterns vs rules. Live demo of Google Translate errors with Malayalam."
               }
             ]
           },
           {
-            "title": "Day 2: Prompt Engineering (Talking to the Brain)",
+            "title": "Session 2: What is an AI Agent? (10:00 AM - 10:50 AM)",
             "slots": [
               {
-                "time": "0:00 - 0:30",
-                "heading": "The \"Robot Chef\" Analogy:",
-                "detail": "If you tell a robot \"Make tea\" without details, it fails. Explain the Role-Task-Format framework."
+                "time": "10:00 - 10:30",
+                "heading": "Chatbot vs Agent:",
+                "detail": "A chatbot replies; an agent plans and acts (e.g., booking cabs, checking calendars)."
               },
               {
-                "time": "0:30 - 1:00",
-                "heading": "Hands-on with ChatGPT/Gemini:",
-                "detail": "Show how to use AI to summarize a tough chapter from their 10th std Physics or History book."
-              },
-              {
-                "time": "1:00 - 1:15",
-                "heading": "Break",
-                "detail": "",
-                "isBreak": true
-              },
-              {
-                "time": "1:15 - 2:00",
-                "heading": "The Prompt Challenge:",
-                "detail": "Students must write a prompt that makes AI explain \"Photosynthesis\" as if it were a sports commentator."
+                "time": "10:30 - 10:50",
+                "heading": "The 4 Parts:",
+                "detail": "Perceive, Think, Act, and Remember. Group activity designing an AI agent for a scenarios."
               }
             ]
           },
           {
-            "title": "Day 3: Creative AI (Art & Media)",
+            "title": "Session 3: Agents Around Us (11:00 AM - 11:40 AM)",
             "slots": [
               {
-                "time": "0:00 - 0:45",
-                "heading": "Generative Art:",
-                "detail": "Introduce Canva Magic Media or Adobe Firefly. Explain how text becomes an image."
-              },
-              {
-                "time": "0:45 - 1:00",
-                "heading": "Demo:",
-                "detail": "Create a logo or a poster for a \"Future Edappal\" project."
-              },
-              {
-                "time": "1:00 - 1:15",
+                "time": "10:50 - 11:00",
                 "heading": "Break",
-                "detail": "",
+                "detail": "Recharge for hands-on sessions.",
                 "isBreak": true
               },
               {
-                "time": "1:15 - 2:00",
-                "heading": "Activity:",
-                "detail": "Every student generates an AI avatar or a poster for their dream hobby/business."
+                "time": "11:00 - 11:20",
+                "heading": "Live Demos:",
+                "detail": "Showcasing ChatGPT, Google Gemini, Suno AI (music), and Adobe Firefly (images)."
+              },
+              {
+                "time": "11:20 - 11:40",
+                "heading": "Phone Hands-on:",
+                "detail": "Students use Google Gemini to generate custom study timetables."
               }
             ]
           },
           {
-            "title": "Day 4: Automation (The Efficiency Boost)",
+            "title": "Session 4: Prompt Engineering (11:40 AM - 1:00 PM)",
             "slots": [
               {
-                "time": "0:00 - 0:30",
-                "heading": "What is Automation?",
-                "detail": "Explain \"If This, Then That\" (IFTTT). Show how an ATM or a vending machine is a simple form of automation."
+                "time": "11:40 - 12:10",
+                "heading": "CRISP Framework:",
+                "detail": "Context, Role, Instructions, Style, Purpose. Learning why quality input matters."
               },
               {
-                "time": "0:30 - 1:00",
-                "heading": "Tool Intro:",
-                "detail": "Show a simple Google Form. Explain how we can make it automatically send an email back."
+                "time": "12:10 - 12:30",
+                "heading": "Prompt Challenge:",
+                "detail": "Bad vs Good prompt battle. Compare AI outputs for climate change topics."
               },
               {
-                "time": "1:00 - 1:15",
-                "heading": "Break",
-                "detail": "",
-                "isBreak": true
-              },
-              {
-                "time": "1:15 - 2:00",
-                "heading": "Practical:",
-                "detail": "Students design a \"Contact Form\" for a business and set up a basic auto-reply logic."
-              }
-            ]
-          },
-          {
-            "title": "Day 5: AI Ethics & Safety (Critical Thinking)",
-            "slots": [
-              {
-                "time": "0:00 - 0:45",
-                "heading": "Deepfakes & Fake News:",
-                "detail": "Show examples (safe ones) of AI-generated faces. Teach them the \"Check the source\" rule."
-              },
-              {
-                "time": "0:45 - 1:00",
-                "heading": "The 70/30 Rule:",
-                "detail": "Use AI for 70% of the work, but the 30% (fact-checking and final touch) must be human."
-              },
-              {
-                "time": "1:00 - 1:15",
-                "heading": "Break",
-                "detail": "",
-                "isBreak": true
-              },
-              {
-                "time": "1:15 - 2:00",
-                "heading": "Quiz/Debate:",
-                "detail": "\"Will AI take our jobs or make us smarter?\""
+                "time": "12:30 - 1:00",
+                "heading": "Wrap-up:",
+                "detail": "Day 1 Quiz and Homework: Solve a real problem tonight using AI."
               }
             ]
           }
         ]
       },
       "week2": {
-        "heading": "Week 2: Digital Marketing & Creation",
+        "heading": "Day 2: Building with AI Agents",
         "days": [
           {
-            "title": "Day 6: Branding & Business Ideas",
+            "title": "Session 1: Agent Types & Creative AI (9:15 AM - 11:30 AM)",
             "slots": [
               {
-                "time": "0:00 - 0:30",
-                "heading": "Branding Basics:",
-                "detail": "Why is the \"Milma\" logo blue? Why is \"Jio\" recognizable?"
+                "time": "9:00 - 9:15",
+                "heading": "Homework Share:",
+                "detail": "Students discuss their AI experiments from the previous evening."
               },
               {
-                "time": "0:30 - 1:00",
-                "heading": "Startup Brainstorming:",
-                "detail": "Use AI to generate 5 business ideas based on a student's hobby (e.g., Football coaching, Art shop)."
+                "time": "9:15 - 10:00",
+                "heading": "Exploring GenAI:",
+                "detail": "Conversational, Research, Coding, and Creative agents. Generate a song with Suno AI."
               },
               {
-                "time": "1:00 - 1:15",
-                "heading": "Break",
-                "detail": "",
-                "isBreak": true
-              },
-              {
-                "time": "1:15 - 2:00",
-                "heading": "Activity:",
-                "detail": "Use AI to create a Name, Tagline, and Logo for their chosen business."
+                "time": "10:00 - 11:30",
+                "heading": "Practical: Junior Journalist:",
+                "detail": "Individual/Pair project. Research, write, and generate artwork for a news report using smartphones."
               }
             ]
           },
           {
-            "title": "Day 7: Social Media & Viral Content",
+            "title": "Session 2: Ethics & Debate (11:30 AM - 12:20 PM)",
             "slots": [
               {
-                "time": "0:00 - 0:45",
-                "heading": "The Algorithm:",
-                "detail": "How Instagram Reels and YouTube Shorts choose what to show you. Importance of the \"First 3 Seconds.\""
-              },
-              {
-                "time": "0:45 - 1:00",
-                "heading": "Content Creation:",
-                "detail": "Use AI to write a script for a 30-second viral video for their business."
-              },
-              {
-                "time": "1:00 - 1:15",
+                "time": "11:30 - 11:40",
                 "heading": "Break",
-                "detail": "",
+                "detail": "Mid-project breather.",
                 "isBreak": true
               },
               {
-                "time": "1:15 - 2:00",
-                "heading": "Activity:",
-                "detail": "Students \"storyboard\" a video and design a thumbnail using Canva."
+                "time": "11:40 - 12:00",
+                "heading": "Risks Explained:",
+                "detail": "Deepfakes, misinformation, and privacy concerns. The 'AI Court' debate activity."
+              },
+              {
+                "time": "12:00 - 12:20",
+                "heading": "The Kerala Angle:",
+                "detail": "Discussing Kerala Startup Mission (KSUM) and localized AI initiatives."
               }
             ]
           },
           {
-            "title": "Day 8: No-Code Website Building (Part 1)",
+            "title": "Session 3: Future & Closing (12:20 AM - 1:00 PM)",
             "slots": [
               {
-                "time": "0:00 - 0:30",
-                "heading": "Websites vs. Apps:",
-                "detail": "Why every business needs a home on the web."
+                "time": "12:20 - 12:45",
+                "heading": "AI Career Paths:",
+                "detail": "Prompt Engineers, AI Builders, and Data Analysts. Free resources like CS50 and Google Learn."
               },
               {
-                "time": "0:30 - 1:00",
-                "heading": "The AI Builder:",
-                "detail": "Introduce a tool like Durable or Framer AI. Show how a site is built in 60 seconds."
-              },
-              {
-                "time": "1:00 - 1:15",
-                "heading": "Break",
-                "detail": "",
-                "isBreak": true
-              },
-              {
-                "time": "1:15 - 2:00",
-                "heading": "Workshop:",
-                "detail": "Students start building their basic landing page — adding their name, logo, and a \"Contact Me\" section."
-              }
-            ]
-          },
-          {
-            "title": "Day 9: AI Integration (Part 2)",
-            "slots": [
-              {
-                "time": "0:00 - 0:45",
-                "heading": "Chatbots:",
-                "detail": "Explain how a website can talk to customers while you sleep."
-              },
-              {
-                "time": "0:45 - 1:00",
-                "heading": "The Setup:",
-                "detail": "Add a simple WhatsApp button or a mini-chat feature to their website."
-              },
-              {
-                "time": "1:00 - 1:15",
-                "heading": "Break",
-                "detail": "",
-                "isBreak": true
-              },
-              {
-                "time": "1:15 - 2:00",
-                "heading": "Refinement:",
-                "detail": "Finalizing the website — checking if links work and if the images look good on a mobile phone."
-              }
-            ]
-          },
-          {
-            "title": "Day 10: The Grand Demo Day",
-            "slots": [
-              {
-                "time": "0:00 - 0:15",
-                "heading": "Final Touch-ups:",
-                "detail": "Making sure all projects are ready."
-              },
-              {
-                "time": "0:15 - 1:00",
-                "heading": "Presentations:",
-                "detail": "Each student shows their website and explains their AI-powered business idea to the class."
-              },
-              {
-                "time": "1:00 - 1:15",
-                "heading": "Break",
-                "detail": "",
-                "isBreak": true
-              },
-              {
-                "time": "1:15 - 2:00",
-                "heading": "Certification:",
-                "detail": "Feedback session, awarding certificates, and a group photo."
+                "time": "12:45 - 1:00",
+                "heading": "Grand Closing:",
+                "detail": "Project showcase, top 3 announcements, and distribution of participation certificates."
               }
             ]
           }
@@ -472,8 +311,8 @@
     },
     "training": {
       "metadata": {
-        "title": "AI Training Program | TouchPointe Digital",
-        "description": "Master AI Skills with TouchPointe Digital. Join our hands-on training program powered by cutting-edge AI solutions like Hatti AI."
+        "title": "AI Agents Workshop for Students | TouchPointe Digital",
+        "description": "A 2-day intensive AI workshop for Class 8-10 students in Kerala. Learn AI Agents, Prompting, and build real projects."
       },
       "nav": {
         "backLabel": "Back to Home",
@@ -483,12 +322,12 @@
             "href": "#about"
           },
           {
-            "label": "Hatti AI",
-            "href": "#hatti-ai"
-          },
-          {
             "label": "Curriculum",
             "href": "#program"
+          },
+          {
+            "label": "Trainer",
+            "href": "#trainer"
           }
         ],
         "cta": {
@@ -497,426 +336,294 @@
         }
       },
       "hero": {
-        "badge": "Powered by next-gen AI Solutions",
-        "title": "Master AI Skills with TouchPointe Digital",
-        "highlightedTitle": "TouchPointe Digital",
-        "description": "Join our hands-on training program powered by state-of-the-art AI systems like Hatti AI. Automate your workflows and lead the AI revolution effortlessly.",
+        "badge": "Hands-on Student Workshop",
+        "title": "Build the Future with AI Agents",
+        "highlightedTitle": "AI Agents",
+        "description": "No coding needed. Just your smartphone and a curious mind. Join our 2-day workshop to transition from a social media user to an AI creator.",
         "primaryCta": {
           "label": "Register Now",
           "href": "/register",
           "icon": "zap"
         },
         "secondaryCta": {
-          "label": "Explore Home Page",
-          "href": "/"
+          "label": "View Syllabus",
+          "href": "/syllabus"
         },
         "image": {
           "src": "/hero_ai_graphic.png",
-          "alt": "AI Aesthetic"
+          "alt": "Students learning AI"
         }
       },
       "about": {
-        "badge": "Trusted Innovators",
-        "title": "About TouchPointe Digital",
-        "highlightedTitle": "TouchPointe Digital",
+        "badge": "Kerala Education",
+        "title": "A Beginner Friendly Journey",
+        "highlightedTitle": "Beginner Friendly",
         "paragraphs": [
-          "TouchPointe Digital is an innovative technology company focused on building intelligent AI-driven solutions that empower businesses and individuals.",
-          "We specialize in automation, AI agents, and digital transformation strategies that deliver real-world impact. Our mission is to bridge the gap between advanced technology and practical application to create unprecedented value."
+          "This 2-day workshop introduces school students to Artificial Intelligence and AI Agents in a simple, fun, and practical way. Students will learn what AI is, how AI agents work, and get hands-on experience using real AI tools on their smartphones.",
+          "We focus on the difference between a chatbot and an AI agent, mastering prompt engineering, and exploring growing career paths in the AI Era right here in Kerala."
         ],
         "card": {
-          "title": "Global Reach",
-          "subtitle": "Transforming Workflows Worldwide",
+          "title": "Smartphone Ready",
+          "subtitle": "No Laptop Required",
           "icon": "globe"
         }
       },
       "hattiAi": {
-        "title": "Introducing Hatti AI",
-        "highlightedTitle": "Hatti AI",
-        "subtitle": "Experience the future of productivity with our advanced intelligent agent.",
-        "description": "Hatti AI is our advanced intelligent agent designed to simplify workflows, automate tasks, and enhance productivity. Built using modern AI technologies, Hatti AI can assist in decision-making, data processing, and real-time interaction.",
+        "title": "The Agent Workflow",
+        "highlightedTitle": "Agent Workflow",
+        "subtitle": "Learn how professionals use AI to work 10x faster.",
+        "description": "We teach the precise stages of an AI Agent: Perceive, Think, Act, and Remember. During the workshop, you will use this framework to complete your Junior Journalist project.",
         "features": [
           {
-            "title": "Smart Automation",
-            "description": "Eliminate repetitive tasks and streamline your efficiency automatically.",
-            "icon": "zap",
-            "tone": "pink"
+            "title": "Prompt Mastery",
+            "description": "Use the CRISP framework to talk to AI like a pro and get perfect results every time.",
+            "icon": "message-square",
+            "tone": "indigo"
           },
           {
-            "title": "Natural Language",
-            "description": "Interact conversationally and seamlessly with your tools and data.",
-            "icon": "message-square",
-            "tone": "indigo",
+            "title": "Creative GenAI",
+            "description": "Generate music with Suno AI and high-quality artwork with Adobe Firefly on your phone.",
+            "icon": "zap",
+            "tone": "pink",
             "featured": true
           },
           {
-            "title": "Workflow Integration",
-            "description": "Connect Hatti AI deeply into your existing business systems.",
+            "title": "Junior Journalist",
+            "description": "Research, write, and publish your own news report using automated AI workflows.",
             "icon": "layers",
             "tone": "cyan"
           }
         ]
       },
       "program": {
-        "badge": "Core Curriculum",
-        "title": "AI Training Program",
-        "highlightedTitle": "Training Program",
+        "badge": "Workshop Details",
+        "title": "AI Agents Workshop",
+        "highlightedTitle": "Highlights",
         "stats": [
           {
             "title": "Duration",
-            "value": "4 Weeks",
+            "value": "2 Days (4hrs/day)",
             "icon": "calendar",
             "tone": "cyan"
           },
           {
-            "title": "Mode",
-            "value": "Online / Offline",
+            "title": "Classes",
+            "value": "8, 9 & 10",
             "icon": "monitor",
             "tone": "pink"
           },
           {
             "title": "Level",
-            "value": "Beginner to Advanced",
+            "value": "Beginner",
             "icon": "bar-chart-3",
             "tone": "indigo"
           }
         ],
-        "learnTitle": "What you'll learn",
+        "learnTitle": "Learning Outcomes",
         "learnItems": [
           {
-            "title": "AI Fundamentals",
-            "description": "Core concepts, models, and how artificial intelligence truly works underneath.",
+            "title": "Chatbots vs. Agents",
+            "description": "Understanding why agents are the next step beyond simple text replies.",
             "icon": "book-open",
             "tone": "indigo"
           },
           {
-            "title": "Building AI Agents",
-            "description": "Architecting, prompting, and deploying powerful agents like Hatti AI.",
+            "title": "Prompt Engineering",
+            "description": "Mastering the role-based prompt frameworks to get accurate AI data.",
             "icon": "cpu",
             "tone": "cyan"
           },
           {
-            "title": "Real-World Use Cases",
-            "description": "Applying AI to domains like marketing, data-analysis, and customer support.",
+            "title": "Practical Projects",
+            "description": "Completing a Journalist mini-project with research, writing, and image GenAI.",
             "icon": "briefcase",
             "tone": "pink"
           },
           {
-            "title": "Hands-on Projects",
-            "description": "Building a complete AI application portfolio throughout the course duration.",
+            "title": "Ethics & Careers",
+            "description": "Learning about deepfakes, misinformation, and the AI jobs of tomorrow.",
             "icon": "layout-panel-top",
             "tone": "indigo"
           }
         ]
       },
       "trainer": {
-        "badge": "Expert Guidance",
-        "title": "Meet Your Trainer",
-        "highlightedTitle": "Trainer",
-        "role": "Lead AI Architect & Strategist",
-        "description": "Our training is led by experienced AI professionals with hands-on industry expertise in building scalable AI systems and automation tools. You will learn directly from the experts who engineer advanced models like Hatti AI.",
+        "badge": "Expert Mentorship",
+        "title": "Hands-on Lab Environment",
+        "highlightedTitle": "Lab Environment",
+        "role": "Touchpointe Training Team",
+        "description": "Join 20-40 fellow students in a collaborative setting. Our facilitators guide you through live demos and smartphone activities to ensure every student completes their project.",
         "image": {
-          "src": "/trainer_avatar.png",
-          "alt": "Expert Trainer",
-          "note": "Verified AI Architect"
+          "src": "/site-logo.png",
+          "alt": "Touchpointe Logo",
+          "note": "Classroom Activity Ready"
         },
         "points": [
-          "10+ Years in Tech & Data Architecture",
-          "Built multiple Generative AI products",
-          "Guest lecturer at premier institutions"
+          "Smartphone based learning",
+          "Google Gemini Integrated",
+          "Kerala Startup Mission insights"
         ]
       },
       "cta": {
-        "title": "Ready to Transform Your Career?",
-        "description": "Spots are limited. Secure your place in our next cohort and start building your future with AI today.",
+        "title": "Secure Your Slot Today",
+        "description": "Join our 2-day AI Agents workshop and build your first AI project. limited seats available per batch.",
         "primary": {
           "label": "Register Now",
           "href": "/register"
         },
         "secondary": {
-          "label": "View Full Training Program",
-          "href": "/"
+          "label": "Full Syllabus",
+          "href": "/syllabus"
         }
       },
       "footer": {
-        "description": "We specialize in automation, AI agents, and digital transformation strategies that deliver real-world impact.",
+        "description": "Designed for students in Kerala to master Artificial Intelligence and AI Agents in a simple, practical way.",
         "quickLinks": [
           {
             "label": "Home",
             "href": "/"
           },
           {
-            "label": "About Us",
-            "href": "#about"
+            "label": "Syllabus",
+            "href": "/syllabus"
           },
           {
-            "label": "Training Programs",
-            "href": "#program"
+            "label": "Registration",
+            "href": "/register"
           }
         ]
       }
     },
     "register": {
       "metadata": {
-        "title": "Register for AI Training | TouchPointe Digital"
+        "title": "Register for AI Agents Workshop | TouchPointe Digital"
       },
       "nav": {
-        "backLabel": "Back to Training",
-        "backHref": "/training"
+        "backLabel": "Back to Home",
+        "backHref": "/"
       },
       "intro": {
-        "badge": "2026 Cohort Intake",
-        "title": "Build a stronger student profile before the first class even begins.",
-        "description": "This updated registration form helps us understand each student in detail, from academic background and career interests to guardian support and scheduling needs.",
+        "badge": "Kerala Student Intake",
+        "title": "Join the AI Agents Workshop",
+        "description": "Provide your details to join the upcoming 2-day workshop. Open for Class 8, 9 and 10 students.",
         "highlights": [
-          "Student-first onboarding with structured profile details",
-          "Career-aligned program matching and batch planning",
-          "Parent and guardian contact capture for smooth follow-up"
+          "Hands-on smartphone based curriculum",
+          "Malayalam and English instruction",
+          "Verified certification on completion"
         ],
         "stats": [
           {
-            "title": "Student Profile",
-            "description": "Academic and learning context",
-            "icon": "graduation-cap"
-          },
-          {
-            "title": "Batch Planning",
-            "description": "Preferred schedule and start window",
+            "title": "2 Days",
+            "description": "Workshop Duration",
             "icon": "calendar-days"
           },
           {
-            "title": "Program Match",
-            "description": "Right track for each learner",
-            "icon": "book-open"
+            "title": "Smartphone",
+            "description": "Tool Required",
+            "icon": "monitor"
+          },
+          {
+            "title": "Kerala",
+            "description": "Workshop Focus",
+            "icon": "graduation-cap"
           }
         ]
       },
       "form": {
-        "eyebrow": "Student Registration",
-        "title": "Complete learner intake",
-        "description": "Share the student's details so we can recommend the best training path and onboarding plan.",
+        "eyebrow": "Workshop Registration",
+        "title": "Complete Learner Intake",
+        "description": "Share the student's details so we can assign the correct batch and share resource links via WhatsApp.",
         "sections": [
           {
-            "title": "Personal Details",
-            "description": "Core identity and contact information.",
+            "title": "Student Information",
+            "description": "Basic details for the participant.",
             "fields": [
               {
-                "id": "firstName",
-                "label": "First Name",
+                "id": "fullName",
+                "label": "Full Name",
                 "type": "text",
-                "placeholder": "Aarav",
+                "placeholder": "Student Name",
                 "required": true
-              },
-              {
-                "id": "lastName",
-                "label": "Last Name",
-                "type": "text",
-                "placeholder": "Sharma",
-                "required": true
-              },
-              {
-                "id": "dob",
-                "label": "Date of Birth",
-                "type": "date"
-              },
-              {
-                "id": "gender",
-                "label": "Gender",
-                "type": "select",
-                "options": [
-                  "Female",
-                  "Male",
-                  "Other",
-                  "Prefer not to say"
-                ]
-              },
-              {
-                "id": "studentEmail",
-                "label": "Student Email",
-                "type": "email",
-                "placeholder": "student@example.com",
-                "required": true
-              },
-              {
-                "id": "studentPhone",
-                "label": "Student Phone",
-                "type": "tel",
-                "placeholder": "+91 98765 43210"
-              },
-              {
-                "id": "address",
-                "label": "Address",
-                "type": "text",
-                "placeholder": "Street address",
-                "fullWidth": true
-              },
-              {
-                "id": "city",
-                "label": "City",
-                "type": "text",
-                "placeholder": "Hyderabad"
-              },
-              {
-                "id": "state",
-                "label": "State",
-                "type": "text",
-                "placeholder": "Telangana"
-              }
-            ]
-          },
-          {
-            "title": "Academic Details",
-            "description": "Help us understand the student's current stage and goals.",
-            "fields": [
-              {
-                "id": "schoolCollege",
-                "label": "School / College",
-                "type": "text",
-                "placeholder": "Institution name"
               },
               {
                 "id": "gradeLevel",
-                "label": "Class / Year",
-                "type": "text",
-                "placeholder": "Grade 11 / 2nd Year"
-              },
-              {
-                "id": "stream",
-                "label": "Academic Stream",
+                "label": "Current Class",
                 "type": "select",
                 "options": [
-                  "Science",
-                  "Commerce",
-                  "Arts & Humanities",
-                  "Engineering",
-                  "Other"
-                ]
+                  "Class 8",
+                  "Class 9",
+                  "Class 10"
+                ],
+                "required": true
               },
               {
-                "id": "graduationYear",
-                "label": "Expected Graduation Year",
-                "type": "number",
-                "placeholder": "2028",
-                "min": 2026,
-                "max": 2040
+                "id": "schoolName",
+                "label": "School Name",
+                "type": "text",
+                "placeholder": "Your School Name",
+                "required": true
               },
               {
-                "id": "aiExperience",
-                "label": "AI / Tech Experience",
+                "id": "preferredLanguage",
+                "label": "Preferred Language",
                 "type": "select",
                 "options": [
-                  "Beginner",
-                  "Intermediate",
-                  "Advanced"
-                ]
-              },
-              {
-                "id": "careerGoal",
-                "label": "Career Interest",
-                "type": "text",
-                "placeholder": "AI, design, business, entrepreneurship"
-              },
-              {
-                "id": "skills",
-                "label": "Current Skills / Tools Known",
-                "type": "text",
-                "placeholder": "Python, Canva, Excel, Scratch, presentation tools",
-                "fullWidth": true
+                  "English",
+                  "Malayalam",
+                  "Both"
+                ],
+                "required": true
               }
             ]
           },
           {
-            "title": "Program Preferences",
-            "description": "Capture the right batch, learning mode, and training fit.",
+            "title": "Contact & Schedule",
+            "description": "How we can reach you and when you can join.",
             "fields": [
               {
-                "id": "programType",
-                "label": "Program Interest",
-                "type": "select",
-                "required": true,
-                "options": [
-                  "Student AI Innovators Masterclass",
-                  "Business AI Integration Workshop",
-                  "Cybersecurity Fundamentals"
-                ]
+                "id": "whatsappNumber",
+                "label": "Parent/Student WhatsApp",
+                "type": "tel",
+                "placeholder": "+91 XXXXX XXXXX",
+                "required": true
               },
-              {
-                "id": "learningMode",
-                "label": "Preferred Learning Mode",
-                "type": "select",
-                "options": [
-                  "Online",
-                  "Offline",
-                  "Hybrid"
-                ]
-              },
-              {
-                "id": "batchTime",
-                "label": "Preferred Batch Time",
-                "type": "select",
-                "options": [
-                  "Weekday Evening",
-                  "Weekend Morning",
-                  "Weekend Evening"
-                ]
-              },
-              {
-                "id": "deviceAccess",
-                "label": "Primary Device Access",
-                "type": "select",
-                "options": [
-                  "Laptop",
-                  "Desktop",
-                  "Tablet",
-                  "Mobile"
-                ]
-              },
-              {
-                "id": "motivation",
-                "label": "Why does the student want to join?",
-                "type": "textarea",
-                "placeholder": "Share learning goals, expectations, or projects the student wants to build.",
-                "rows": 4,
-                "fullWidth": true
-              }
-            ]
-          },
-          {
-            "title": "Parent / Guardian Details",
-            "description": "Add a trusted contact for communication and enrolment follow-up.",
-            "fields": [
               {
                 "id": "guardianName",
-                "label": "Guardian Name",
+                "label": "Parent / Guardian Name",
                 "type": "text",
-                "placeholder": "Parent or guardian full name"
+                "placeholder": "Name of Parent",
+                "required": true
               },
               {
-                "id": "relationship",
-                "label": "Relationship",
-                "type": "text",
-                "placeholder": "Mother, father, guardian"
+                "id": "preferredBatch",
+                "label": "Preferred Batch",
+                "type": "select",
+                "options": [
+                  "Weekdays (Mon-Fri)",
+                  "Weekends (Sat-Sun)"
+                ],
+                "required": true
               },
               {
-                "id": "guardianPhone",
-                "label": "Guardian Phone",
-                "type": "tel",
-                "placeholder": "+91 98765 43210"
-              },
-              {
-                "id": "guardianEmail",
-                "label": "Guardian Email",
-                "type": "email",
-                "placeholder": "parent@example.com"
+                "id": "referral",
+                "label": "How did you hear about us?",
+                "type": "select",
+                "options": [
+                  "Social Media",
+                  "School Announcement",
+                  "Friends/Family",
+                  "Other"
+                ]
               }
             ]
           }
         ],
         "commitments": [
-          "Application review within 24-48 hours",
-          "Student data handled securely and privately",
-          "Guided onboarding for the right AI track"
+          "Hands-on Project Guidance",
+          "Certificate of Participation",
+          "Resource Access via WhatsApp"
         ],
-        "submitLabel": "Complete Registration"
+        "submitLabel": "Submit Enrollment"
       }
     }
   }

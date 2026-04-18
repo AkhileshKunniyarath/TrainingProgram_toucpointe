@@ -60,7 +60,7 @@ export default async function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(syllabusSchema) }}
       />
-      <SyllabusPageContent data={pageData} />
+      <SyllabusPageContent data={pageData} brand={content.site?.brand} />
     </>
   );
 }

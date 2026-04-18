@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
 
+/* ─── SVG Icon Map ─── */
 const ICON_MAP = {
   'trending-up': (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -24,7 +26,8 @@ const ICON_MAP = {
   'shield-alert': (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
       stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      <line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
     </svg>
   ),
   users: (
@@ -59,20 +62,20 @@ const ICON_MAP = {
     </svg>
   ),
   award: (
-    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
       stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="8" r="6" /><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
     </svg>
   ),
   'x-circle': (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="10" /><line x1="15" y1="9" x2="9" y2="15" /><line x1="9" y1="9" x2="15" y2="15" />
     </svg>
   ),
   'check-circle-2': (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
       <path d="m9 12 2 2 4-4" />
     </svg>
@@ -83,48 +86,92 @@ const ICON_MAP = {
       <line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="18" x2="20" y2="18" />
     </svg>
   ),
+  x: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+  ),
   'arrow-right': (
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
       <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+    </svg>
+  ),
+  'arrow-up-right': (
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+    </svg>
+  ),
+  check: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  ),
+  sparkles: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+      <path d="M5 3v4" /><path d="M19 17v4" /><path d="M3 5h4" /><path d="M17 19h4" />
     </svg>
   ),
 };
 
-const TONE_CLASSES = {
-  indigo: { bg: 'bg-indigo-500-10', text: 'text-indigo-400', border: 'border-indigo-500-20' },
-  cyan:   { bg: 'bg-cyan-500-10',   text: 'text-cyan-400',   border: '' },
-  pink:   { bg: 'bg-pink-500-10',   text: 'text-pink-400',   border: '' },
-  red:    { bg: 'rgba(239,68,68,0.1)', text: 'rgb(248,113,113)', border: '' },
-};
-
-function Icon({ name, size = 24, className = '' }) {
+function Icon({ name, size = 24, style = {} }) {
   const el = ICON_MAP[name];
   if (!el) return null;
   return (
-    <span className={className} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: size, height: size }}>
+    <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: size, height: size, flexShrink: 0, ...style }}>
       {el}
     </span>
   );
 }
 
+/* ─── Scroll Reveal Hook ─── */
+function useScrollReveal() {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+    );
+
+    const elements = document.querySelectorAll('[data-reveal]');
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+}
+
+/* ─── NavBar ─── */
 function NavBar({ brand, sections }) {
   const navRef = useRef(null);
 
   useEffect(() => {
     const el = navRef.current;
     if (!el) return;
-    const handler = () => {
-      if (window.scrollY > 50) el.classList.add('nav-scrolled');
-      else el.classList.remove('nav-scrolled');
+    const onScroll = () => {
+      el.classList.toggle('nav-scrolled', window.scrollY > 40);
     };
-    window.addEventListener('scroll', handler, { passive: true });
-    return () => window.removeEventListener('scroll', handler);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    document.getElementById('hp-mobile-menu')?.style.setProperty('display', 'none');
+    closeMobile();
+  };
+
+  const closeMobile = () => {
+    const menu = document.getElementById('hp-mobile-menu');
+    if (menu) menu.style.display = 'none';
   };
 
   const toggleMobile = () => {
@@ -134,40 +181,154 @@ function NavBar({ brand, sections }) {
   };
 
   return (
-    <nav ref={navRef} id="navbar" style={{ position: 'fixed', top: 0, width: '100%', zIndex: 100, transition: 'all 0.3s ease', padding: '1.5rem 0' }}>
-      <div className="container flex justify-between items-center">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }} onClick={() => scrollTo('home')}>
-          <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'var(--gradient-primary)', boxShadow: '0 4px 14px rgba(99,102,241,0.2)' }}>
-            <Icon name="cpu" size={20} className="text-white" />
+    <nav ref={navRef} id="navbar" style={{ position: 'fixed', top: 0, width: '100%', zIndex: 100, transition: 'all 0.3s ease', padding: '1.25rem 0' }}>
+      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        {/* Logo */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', cursor: 'pointer' }} onClick={() => scrollTo('home')}>
+          <div style={{
+            width: '2.5rem', height: '2.5rem', borderRadius: '0.75rem',
+            background: brand?.logoPath ? 'transparent' : 'var(--gradient-brand)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: brand?.logoPath ? 'none' : '0 4px 12px rgba(79,70,229,0.3)',
+            flexShrink: 0
+          }}>
+            {brand?.logoPath ? (
+              <img src={brand.logoPath} alt="Logo" style={{ width: '100%', height: '100%', borderRadius: 'inherit', objectFit: 'cover' }} />
+            ) : (
+              <Icon name="cpu" size={18} style={{ color: 'white' }} />
+            )}
           </div>
-          <span className="font-bold text-xl" style={{ letterSpacing: '-0.05em' }}>
-            {brand?.logoTextPrimary || 'Touchpointe'}<span style={{ color: 'var(--primary-light)' }}>{brand?.logoTextAccent || '.digital'}</span>
+          <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.2rem', letterSpacing: '-0.04em', color: 'var(--text-primary)' }}>
+            {brand?.logoTextPrimary || 'Touchpointe'}
+            <span style={{ background: 'var(--gradient-brand)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>
+              {brand?.logoTextAccent || '.digital'}
+            </span>
           </span>
         </div>
 
-        <div className="desktop-menu" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+        {/* Desktop Nav */}
+        <div className="desktop-menu" style={{ display: 'flex', alignItems: 'center', gap: '2.25rem' }}>
           {sections.map((s) => (
             <button key={s.id} onClick={() => scrollTo(s.id)} className="nav-link">{s.label}</button>
           ))}
-          <button className="btn btn-primary text-sm" style={{ padding: '0.5rem 1.5rem' }} onClick={() => scrollTo('smb')}>Enroll Now</button>
+          <a
+            href="/register"
+            className="btn btn-primary btn-sm"
+            style={{ padding: '0.55rem 1.5rem', textDecoration: 'none' }}
+          >
+            Enroll Now
+          </a>
         </div>
 
-        <button className="mobile-menu-btn" onClick={toggleMobile} style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer', display: 'none' }}>
-          <Icon name="menu" size={24} />
+        {/* Mobile Toggle */}
+        <button
+          className="mobile-menu-btn"
+          onClick={toggleMobile}
+          style={{ background: 'none', border: '1.5px solid var(--border-color)', borderRadius: '0.5rem', padding: '0.35rem', color: 'var(--text-primary)', cursor: 'pointer', display: 'none' }}
+        >
+          <Icon name="menu" size={22} />
         </button>
       </div>
 
-      <div id="hp-mobile-menu" style={{ display: 'none', position: 'absolute', top: '100%', left: 0, width: '100%', background: 'rgba(20,27,45,0.95)', backdropFilter: 'blur(16px)', padding: '1rem', flexDirection: 'column', gap: '1rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+      {/* Mobile Menu */}
+      <div
+        id="hp-mobile-menu"
+        style={{
+          display: 'none', position: 'absolute', top: '100%', left: 0, width: '100%',
+          background: 'rgba(255,255,255,0.98)', backdropFilter: 'blur(20px)',
+          padding: '1.25rem 1.5rem', flexDirection: 'column', gap: '0.5rem',
+          borderBottom: '1px solid var(--border-color)', boxShadow: '0 16px 40px rgba(15,23,42,0.1)',
+        }}
+      >
         {sections.map((s) => (
-          <button key={s.id} onClick={() => scrollTo(s.id)} className="nav-link text-xl" style={{ textAlign: 'left' }}>{s.label}</button>
+          <button
+            key={s.id}
+            onClick={() => scrollTo(s.id)}
+            style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', fontWeight: 500, fontSize: '1rem', textAlign: 'left', padding: '0.625rem 0.75rem', borderRadius: '0.5rem', transition: 'all 0.15s', width: '100%' }}
+          >
+            {s.label}
+          </button>
         ))}
-        <button className="btn btn-primary" style={{ marginTop: '1rem', width: '100%' }} onClick={() => scrollTo('smb')}>Enroll Now</button>
+        <a className="btn btn-primary" style={{ marginTop: '0.5rem', width: '100%', textDecoration: 'none' }} href="/register">
+          Enroll Now
+        </a>
       </div>
     </nav>
   );
 }
 
-export default function HomePageContent({ data }) {
+/* ─── Stat Card ─── */
+function StatCard({ stat, delay }) {
+  const colorMap = {
+    indigo: { color: 'var(--primary)' },
+    cyan: { color: 'var(--secondary)' },
+    pink: { color: 'var(--accent)' },
+  };
+  const clr = colorMap[stat.tone] || colorMap.indigo;
+
+  return (
+    <div data-reveal="up" data-reveal-delay={delay} className="stat-card" style={{ textAlign: 'center' }}>
+      <div style={{
+        width: '2.75rem', height: '2.75rem', borderRadius: '0.75rem',
+        background: stat.tone === 'cyan' ? 'var(--secondary-subtle)' : stat.tone === 'pink' ? 'var(--accent-subtle)' : 'var(--primary-subtle)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        margin: '0 auto 1rem', color: clr.color,
+      }}>
+        <Icon name={stat.icon} size={22} />
+      </div>
+      <div className="stat-number">{stat.value}</div>
+      <div className="stat-label">{stat.label}</div>
+    </div>
+  );
+}
+
+/* ─── Program Card ─── */
+function ProgramCard({ prog, delay, toneClass = 'indigo' }) {
+  return (
+    <div data-reveal="up" data-reveal-delay={delay} className={`program-card${prog.featured ? ' featured' : ''}`}>
+      {prog.featured && prog.featuredLabel && (
+        <div className="featured-tag">{prog.featuredLabel}</div>
+      )}
+      <div style={{
+        width: '3rem', height: '3rem', borderRadius: '0.75rem', marginBottom: '1.25rem',
+        background: 'var(--gradient-brand)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+        color: 'white', boxShadow: '0 4px 14px rgba(79,70,229,0.25)', flexShrink: 0,
+      }}>
+        <Icon name={prog.icon} size={20} />
+      </div>
+
+      <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>{prog.title}</h3>
+
+      {prog.formats && (
+        <div className="program-format-bar">
+          <span style={{ color: 'var(--text-muted)', fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Formats:</span>
+          {prog.formats.split('•').map((f, j) => (
+            <span key={j} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}>
+              {j > 0 && <span style={{ opacity: 0.4, margin: '0 0.1rem' }}>·</span>}
+              <strong style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>{f.trim()}</strong>
+            </span>
+          ))}
+        </div>
+      )}
+
+      <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.65, flexGrow: 1, marginBottom: '1.5rem' }}>{prog.description}</p>
+
+      <button
+        className="btn btn-secondary"
+        style={{
+          width: '100%',
+          ...(prog.featured ? { borderColor: 'rgba(79,70,229,0.3)', color: 'var(--primary)', background: 'var(--primary-subtle)' } : {}),
+        }}
+      >
+        View Syllabus
+        <Icon name="arrow-up-right" size={15} />
+      </button>
+    </div>
+  );
+}
+
+/* ─── Main Page ─── */
+export default function HomePageContent({ data, brand }) {
   const d = data || {};
   const whySection = d.whySection || {};
   const smbSection = d.smbSection || {};
@@ -175,257 +336,277 @@ export default function HomePageContent({ data }) {
   const footer = d.footer || {};
   const stats = d.stats || [];
 
+  // Activate scroll reveal
+  useScrollReveal();
+
   const navSections = [
-    { id: 'why-train', label: 'Why Train?' },
-    { id: 'smb',       label: 'Business Programs' },
-    { id: 'students',  label: 'Student Programs' },
+    { id: 'home', label: 'Home' },
+    { id: 'why-train', label: 'Why AI?' },
+    { id: 'workshop', label: 'Workshop' },
   ];
 
   return (
     <>
-      {/* Nav */}
-      <NavBar brand={{}} sections={navSections} />
-
-      <div className="bg-glow-blob blob-top-right" />
-      <div className="bg-glow-blob blob-bottom-left" style={{ bottom: '10%', left: '10%' }} />
+      <NavBar brand={brand} sections={navSections} />
 
       <main>
-        {/* ── HERO ─────────────────────────────────────────── */}
-        <section id="home" className="section flex items-center relative" style={{ minHeight: '100vh', paddingTop: '8rem', overflow: 'hidden' }}>
-          {d.heroBgImage && (
-            <div className="absolute inset-0 opacity-20" style={{ backgroundImage: `url('${d.heroBgImage}')`, backgroundSize: 'cover', backgroundPosition: 'center', zIndex: 0 }} />
-          )}
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent, var(--bg-color))', zIndex: 0 }} />
+        {/* ═══════════════════════════════════════════
+            HERO
+        ═══════════════════════════════════════════ */}
+        <section id="home" className="hero-section">
+          {/* Background decorations */}
+          <div className="hero-bg-dots" />
+          <div className="hero-glow-top" />
+          <div className="hero-glow-bottom" />
 
-          <div className="container relative" style={{ zIndex: 10 }}>
-            <div className="text-center" style={{ maxWidth: 800, margin: '0 auto' }}>
+          {d.heroBgImage && (
+            <div style={{
+              position: 'absolute', inset: 0, opacity: 0.04,
+              backgroundImage: `url('${d.heroBgImage}')`,
+              backgroundSize: 'cover', backgroundPosition: 'center', zIndex: 0,
+            }} />
+          )}
+
+          <div className="container" style={{ position: 'relative', zIndex: 10, width: '100%' }}>
+            <div style={{ maxWidth: 760, margin: '0 auto', textAlign: 'center' }}>
+
+              {/* Badge */}
               {d.heroBadge && (
-                <div className="animate-fade-in inline-flex items-center gap-2 rounded-full font-medium text-sm mb-8 text-indigo-400 py-2 px-4" style={{ border: '1px solid rgba(99,102,241,0.2)' }}>
-                  <div style={{ width: 8, height: 8, background: 'rgba(99,102,241,1)', borderRadius: '50%' }} className="animate-pulse" />
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.4rem 1rem', background: 'var(--primary-subtle)', border: '1px solid rgba(79,70,229,0.15)', borderRadius: 9999, color: 'var(--primary)', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: '1.75rem', animation: 'fadeInUp 0.6s ease-out both' }}>
+                  <span style={{ width: 6, height: 6, background: 'var(--primary)', borderRadius: '50%', display: 'inline-block', animation: 'pulse 2s infinite' }} />
                   {d.heroBadge}
                 </div>
               )}
 
-              <h1 className="mb-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                {d.heroHeading || 'Empowering Futures with'} <br />
-                <span className="text-gradient animate-pulse-glow" style={{ display: 'inline-block' }}>
+              {/* Heading */}
+              <h1 style={{ marginBottom: '1.25rem', animation: 'fadeInUp 0.6s 0.1s ease-out both', color: 'var(--text-primary)', lineHeight: 1.1 }}>
+                {d.heroHeading || 'Empowering Futures with'}{' '}
+                <span className="text-gradient-animated" style={{ display: 'inline-block' }}>
                   {d.heroHeadingHighlight || 'Advanced Tech Training'}
                 </span>
               </h1>
 
+              {/* Subtitle */}
               {d.heroSubtitle && (
-                <p className="subtitle animate-fade-in" style={{ animationDelay: '0.2s' }}>{d.heroSubtitle}</p>
+                <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', margin: '0 auto 0', maxWidth: 620, lineHeight: 1.75, animation: 'fadeInUp 0.6s 0.2s ease-out both' }}>
+                  {d.heroSubtitle}
+                </p>
               )}
 
-              <div className="flex items-center justify-center gap-4 mt-10 animate-fade-in" style={{ animationDelay: '0.3s', flexWrap: 'wrap' }}>
-                <button onClick={() => document.getElementById('smb')?.scrollIntoView({ behavior: 'smooth' })} className="btn btn-primary" style={{ minWidth: 200 }}>
-                  {d.heroCtaBusiness || 'For Businesses'}
+              {/* CTA Buttons */}
+              <div className="hero-cta-group" style={{ animation: 'fadeInUp 0.6s 0.3s ease-out both' }}>
+                <a
+                  className="btn btn-primary btn-lg"
+                  href="/register"
+                  style={{ textDecoration: 'none' }}
+                >
+                  {d.heroCtaStudents || 'Register Now'}
                   <Icon name="arrow-right" size={18} />
-                </button>
-                <button onClick={() => document.getElementById('students')?.scrollIntoView({ behavior: 'smooth' })} className="btn btn-secondary" style={{ minWidth: 200 }}>
-                  {d.heroCtaStudents || 'For Students'}
-                </button>
+                </a>
+                <a
+                  className="btn btn-secondary btn-lg"
+                  href="/syllabus"
+                  style={{ textDecoration: 'none' }}
+                >
+                  {d.heroCtaBusiness || 'View Syllabus'}
+                </a>
               </div>
+
             </div>
 
-            {/* Stats */}
+            {/* Stats Grid */}
             {stats.length > 0 && (
-              <div className="grid-3 mt-24 animate-fade-in relative" style={{ animationDelay: '0.5s', zIndex: 10 }}>
-                {stats.map((stat, i) => {
-                  const tone = TONE_CLASSES[stat.tone] || TONE_CLASSES.indigo;
-                  return (
-                    <div key={i} className="glass-card flex flex-col items-center text-center p-8" style={i === 1 ? { transform: 'translateY(-20px)' } : {}}>
-                      <div className={`w-16 h-16 rounded-2xl ${tone.bg} flex items-center justify-center mb-6`}>
-                        <Icon name={stat.icon} size={24} className={tone.text} />
-                      </div>
-                      <h3 className="text-4xl font-bold mb-2">{stat.value}</h3>
-                      <p className="text-muted">{stat.label}</p>
-                    </div>
-                  );
-                })}
+              <div className="stats-grid" style={{ marginTop: '4.5rem' }}>
+                {stats.map((stat, i) => (
+                  <StatCard key={i} stat={stat} delay={String(i * 100 + 100)} />
+                ))}
               </div>
             )}
           </div>
         </section>
 
-        {/* ── WHY TRAIN ────────────────────────────────────── */}
-        <section id="why-train" className="section relative">
+        {/* ═══════════════════════════════════════════
+            WHY TRAIN
+        ═══════════════════════════════════════════ */}
+        <section id="why-train" className="section why-section">
           <div className="container">
-            <div className="text-center">
-              <h2 className="animate-fade-in">
-                {whySection.heading || 'Why Tech Training is'} <span className="text-gradient">{whySection.headingHighlight || 'Mandatory'}</span>
+            {/* Section Header */}
+            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+              <div data-reveal="fade" className="section-label" style={{ display: 'inline-flex', margin: '0 auto 1rem' }}>
+                <Icon name="sparkles" size={14} />
+                The Digital Imperative
+              </div>
+              <h2 data-reveal="up" style={{ marginBottom: '1rem' }}>
+                {whySection.heading || 'Why Tech Training is'}{' '}
+                <span className="text-gradient">{whySection.headingHighlight || 'Mandatory'}</span>
               </h2>
-              {whySection.subtitle && <p className="subtitle animate-fade-in">{whySection.subtitle}</p>}
+              {whySection.subtitle && (
+                <p data-reveal="up" data-reveal-delay="100" className="subtitle" style={{ margin: '0 auto' }}>
+                  {whySection.subtitle}
+                </p>
+              )}
             </div>
 
-            <div className="two-col-layout mt-16" style={{ display: 'grid', gap: '4rem', gridTemplateColumns: '1fr 1fr', alignItems: 'center' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            {/* Two column layout */}
+            <div className="two-col-layout" style={{ display: 'grid', gap: '3.5rem', gridTemplateColumns: '1fr 1fr', alignItems: 'start' }}>
+
+              {/* Points column */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                 {(whySection.points || []).map((point, i) => {
                   const isRed = point.tone === 'red';
-                  const tone = TONE_CLASSES[point.tone] || TONE_CLASSES.indigo;
+                  const iconColor = isRed ? '#dc2626' : point.tone === 'cyan' ? 'var(--secondary)' : 'var(--primary)';
+                  const iconBg = isRed ? 'rgba(239,68,68,0.08)' : point.tone === 'cyan' ? 'var(--secondary-subtle)' : 'var(--primary-subtle)';
+
                   return (
-                    <div key={i} className="glass-card flex gap-6 p-6"
-                      style={i === 1 ? { borderColor: 'rgba(99,102,241,0.3)', boxShadow: '0 0 30px rgba(99,102,241,0.1)' } : {}}>
-                      <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: isRed ? 'rgba(239,68,68,0.1)' : undefined, flexShrink: 0 }}
-                        {...(!isRed ? { className: `w-12 h-12 rounded-xl flex items-center justify-center ${tone.bg}` } : {})}>
-                        <Icon name={point.icon} size={20} style={isRed ? { color: 'rgb(248,113,113)' } : undefined} className={!isRed ? tone.text : ''} />
+                    <div key={i} data-reveal="left" data-reveal-delay={String(i * 100)} className="why-point-card">
+                      <div style={{ width: '2.75rem', height: '2.75rem', borderRadius: '0.75rem', background: iconBg, color: iconColor, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                        <Icon name={point.icon} size={20} />
                       </div>
                       <div>
-                        <h3 className="text-xl mb-2 text-white">{point.title}</h3>
-                        <p className="text-muted text-sm">{point.description}</p>
+                        <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.4rem', color: 'var(--text-primary)' }}>{point.title}</h3>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.65, margin: 0 }}>{point.description}</p>
                       </div>
                     </div>
                   );
                 })}
               </div>
 
-              <div className="relative">
-                <div className="glass-card flex flex-col justify-center" style={{ aspectRatio: '1', maxWidth: 500, margin: '0 auto', padding: '2.5rem', overflow: 'hidden' }}>
-                  <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(99,102,241,0.1), transparent)' }} />
-                  <div className="relative" style={{ zIndex: 1 }}>
-                    <h3 className="text-3xl font-bold mb-6">{whySection.costBoxTitle || 'The High Cost of Inaction'}</h3>
-                    <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                      {(whySection.costItems || []).map((item, i) => (
-                        <li key={i} className="flex items-center gap-4">
-                          <span style={{ color: 'rgb(248,113,113)', flexShrink: 0, display: 'inline-flex' }}><Icon name="x-circle" size={20} /></span>
-                          <span className="text-muted">{item}</span>
-                        </li>
-                      ))}
-                      <div style={{ height: 1, background: 'rgba(255,255,255,0.1)', margin: '1.5rem 0' }} />
-                      <li className="flex items-center gap-4">
-                        <span style={{ color: 'rgb(74,222,128)', flexShrink: 0, display: 'inline-flex' }}><Icon name="check-circle-2" size={20} /></span>
-                        <span className="text-white font-medium">{whySection.costCta || 'Training empowers you to take control.'}</span>
-                      </li>
-                    </ul>
+              {/* Cost box */}
+              <div data-reveal="right" style={{ position: 'sticky', top: '6rem' }}>
+                <div className="cost-box">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                    <div style={{ width: '2.25rem', height: '2.25rem', borderRadius: '0.625rem', background: 'rgba(239,68,68,0.08)', color: '#dc2626', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Icon name="shield-alert" size={18} />
+                    </div>
+                    <h3 style={{ fontSize: '1.2rem', fontWeight: 800, margin: 0, color: 'var(--text-primary)' }}>
+                      {whySection.costBoxTitle || 'The High Cost of Inaction'}
+                    </h3>
                   </div>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.65, marginBottom: '1.5rem' }}>
+                    Staying behind the technology curve is a competitive liability. Here&apos;s what untrained teams cost you:
+                  </p>
+
+                  <ul className="cost-list">
+                    {(whySection.costItems || []).map((item, i) => (
+                      <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', fontSize: '0.92rem', color: 'var(--text-secondary)' }}>
+                        <span style={{ color: '#dc2626', flexShrink: 0, marginTop: '2px', display: 'inline-flex' }}>
+                          <Icon name="x-circle" size={17} />
+                        </span>
+                        {item}
+                      </li>
+                    ))}
+
+                    <li style={{ marginTop: '1.25rem', paddingTop: '1.25rem', borderTop: '1px solid var(--border-color)', display: 'flex', alignItems: 'flex-start', gap: '0.75rem', fontSize: '0.95rem', fontWeight: 600, color: 'var(--success)' }}>
+                      <span style={{ flexShrink: 0, marginTop: '2px', display: 'inline-flex' }}>
+                        <Icon name="check-circle-2" size={18} />
+                      </span>
+                      {whySection.costCta || 'Training empowers you to take control.'}
+                    </li>
+                  </ul>
+                </div>
+
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* ── SMB SECTION ──────────────────────────────────── */}
-        <section id="smb" className="section relative" style={{ background: 'rgba(7,10,18,0.5)', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        {/* ═══════════════════════════════════════════
+            WORKSHOP PROGRAMME
+        ═══════════════════════════════════════════ */}
+        <section id="workshop" className="section students-section">
           <div className="container">
-            <div className="text-center mb-16">
-              {smbSection.badge && (
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-medium text-sm mb-4 bg-indigo-500-10 text-indigo-400">
-                  {smbSection.badge}
-                </div>
-              )}
-              <h2>
-                {smbSection.heading || 'Business'} <span className="text-gradient">{smbSection.headingHighlight || 'Training Programs'}</span>
-              </h2>
-              {smbSection.subtitle && <p className="subtitle">{smbSection.subtitle}</p>}
-            </div>
-
-            <div className="grid-3">
-              {(smbSection.programs || []).map((prog, i) => (
-                <div key={i} className="glass-card flex flex-col" style={{ position: 'relative', overflow: 'hidden', ...(prog.featured ? { borderColor: 'rgba(99,102,241,0.5)' } : {}) }}>
-                  {prog.featured && prog.featuredLabel && (
-                    <div className="absolute" style={{ top: 0, right: 0, padding: '0.25rem 0.75rem', background: 'linear-gradient(to right, rgb(236,72,153), rgb(99,102,241))', color: 'white', fontSize: '0.75rem', fontWeight: 'bold', borderBottomLeftRadius: '0.5rem' }}>
-                      {prog.featuredLabel}
-                    </div>
-                  )}
-                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style={{ background: 'var(--gradient-primary)' }}>
-                    <Icon name={prog.icon} size={24} className="text-white" />
-                  </div>
-                  <h3 className="text-2xl mb-2">{prog.title}</h3>
-                  {prog.formats && (
-                    <div className="flex items-center text-xs mb-4 pb-4" style={{ color: 'var(--text-muted)', borderBottom: '1px solid rgba(255,255,255,0.05)', flexWrap: 'wrap', gap: '0.25rem' }}>
-                      Formats: {prog.formats.split('•').map((f, j) => (
-                        <span key={j}>{j > 0 && <span style={{ margin: '0 0.25rem' }}>•</span>}<strong style={{ color: '#fff' }}>{f.trim()}</strong></span>
-                      ))}
-                    </div>
-                  )}
-                  <p className="text-muted text-sm flex-grow mb-6">{prog.description}</p>
-                  <button className="btn btn-secondary w-full" style={prog.featured ? { background: 'rgba(99,102,241,0.1)', borderColor: 'rgba(99,102,241,0.3)' } : {}}>
-                    View Syllabus
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── STUDENTS SECTION ─────────────────────────────── */}
-        <section id="students" className="section relative">
-          <div className="container">
-            <div className="text-center mb-16">
+            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
               {studentsSection.badge && (
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-medium text-sm mb-4 bg-cyan-500-10 text-cyan-400" style={{ border: '1px solid rgba(6,182,212,0.2)' }}>
+                <div data-reveal="fade" className="section-label section-label-cyan" style={{ display: 'inline-flex', margin: '0 auto 1rem' }}>
                   {studentsSection.badge}
                 </div>
               )}
-              <h2>
-                {studentsSection.heading || 'Student'} <span className="text-gradient">{studentsSection.headingHighlight || 'Career Launchpad'}</span>
+              <h2 data-reveal="up" style={{ marginBottom: '1rem' }}>
+                {studentsSection.heading || 'Flagship'}{' '}
+                <span className="text-gradient">{studentsSection.headingHighlight || 'Workshop'}</span>
               </h2>
-              {studentsSection.subtitle && <p className="subtitle">{studentsSection.subtitle}</p>}
+              {studentsSection.subtitle && (
+                <p data-reveal="up" data-reveal-delay="100" className="subtitle" style={{ margin: '0 auto' }}>
+                  {studentsSection.subtitle}
+                </p>
+              )}
             </div>
 
-            {/* Featured program */}
+            {/* Featured Program */}
             {studentsSection.featuredProgram && (() => {
               const fp = studentsSection.featuredProgram;
               return (
-                <div className="glass-card mb-12" style={{ background: 'linear-gradient(to right, rgba(99,102,241,0.05), rgba(6,182,212,0.05))', border: '1px solid rgba(99,102,241,0.3)', padding: '2.5rem', textAlign: 'left' }}>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '2rem' }}>
-                    <div style={{ flex: 1, minWidth: 300 }}>
-                      {fp.badge && (
-                        <div className="inline-flex items-center gap-2 rounded-full font-medium text-xs mb-4 text-indigo-400 py-1 px-3" style={{ border: '1px solid rgba(99,102,241,0.2)' }}>
-                          {fp.badge}
+                <div data-reveal="up" className="featured-program-card">
+                  <div style={{ flex: 1, minWidth: 280 }}>
+                    {fp.badge && (
+                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', padding: '0.3rem 0.875rem', background: 'var(--primary-subtle)', border: '1px solid rgba(79,70,229,0.15)', borderRadius: 9999, color: 'var(--primary)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '1rem' }}>
+                        <Icon name="sparkles" size={12} />
+                        {fp.badge}
+                      </div>
+                    )}
+                    <h3 style={{ fontSize: 'clamp(1.3rem, 3vw, 2rem)', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--text-primary)' }}>{fp.title}</h3>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px solid var(--border-color)', flexWrap: 'wrap' }}>
+                      {fp.format && <span style={{ fontWeight: 500 }}>{fp.format}</span>}
+                      {fp.ageRequirement && <><span style={{ opacity: 0.4 }}>•</span><span>{fp.ageRequirement}</span></>}
+                    </div>
+                    {fp.description && <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '1.75rem', maxWidth: 560 }}>{fp.description}</p>}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+                      {fp.ctaHref && <a href={fp.ctaHref} className="btn btn-primary" style={{ textDecoration: 'none' }}>{fp.ctaLabel || 'View Full Syllabus'} <Icon name="arrow-right" size={16} /></a>}
+                      <a href="/register" className="btn btn-secondary" style={{ textDecoration: 'none' }}>{fp.enrollLabel || 'Register Now'}</a>
+                    </div>
+                  </div>
+
+                  <div className="program-image-placeholder">
+                    {fp.image ? (
+                      <img src={fp.image} alt={fp.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    ) : (
+                      <div style={{ textAlign: 'center', color: 'white', opacity: 0.9 }}>
+                        <Icon name="rocket" size={56} />
+                        <div style={{ fontSize: '0.78rem', fontWeight: 700, marginTop: '0.75rem', letterSpacing: '0.04em', textTransform: 'uppercase', opacity: 0.8 }}>
+                          Workshop Programme
                         </div>
-                      )}
-                      <h3 className="text-3xl mb-3">{fp.title}</h3>
-                      <div className="flex items-center text-sm mb-4 pb-4" style={{ color: 'var(--text-muted)', borderBottom: '1px solid rgba(255,255,255,0.05)', gap: '0.5rem' }}>
-                        {fp.format && <span>{fp.format}</span>}
-                        {fp.ageRequirement && <><span style={{ margin: '0 0.25rem' }}>•</span><span>{fp.ageRequirement}</span></>}
                       </div>
-                      {fp.description && <p className="text-muted mb-6" style={{ maxWidth: 600 }}>{fp.description}</p>}
-                      <div className="flex items-center gap-4" style={{ flexWrap: 'wrap' }}>
-                        {fp.ctaHref && <a href={fp.ctaHref} className="btn btn-primary" style={{ textDecoration: 'none' }}>{fp.ctaLabel || 'View Full Syllabus'}</a>}
-                        <button className="btn btn-secondary">{fp.enrollLabel || 'Enroll for Next Batch'}</button>
-                      </div>
-                    </div>
-                    <div style={{ width: '15rem', height: '15rem', flexShrink: 0, background: 'rgba(99,102,241,0.1)', borderRadius: '1rem', border: '1px solid rgba(99,102,241,0.2)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <div className="absolute inset-0" style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.2) 0%, transparent 70%)' }} />
-                      {fp.image ? (
-                        <img src={fp.image} alt={fp.title} style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'relative', zIndex: 10, borderRadius: '1rem' }} />
-                      ) : (
-                        <Icon name="rocket" size={80} className="text-indigo-400" />
-                      )}
-                    </div>
+                    )}
                   </div>
                 </div>
               );
             })()}
 
             {studentsSection.singleTrackLabel && (
-              <h3 className="text-xl mb-8 text-center text-muted">{studentsSection.singleTrackLabel}</h3>
+              <h3 data-reveal="fade" style={{ textAlign: 'center', fontWeight: 600, color: 'var(--text-secondary)', fontSize: '1rem', marginBottom: '2rem', letterSpacing: '0.02em' }}>
+                {studentsSection.singleTrackLabel}
+              </h3>
             )}
 
             <div className="grid-3">
               {(studentsSection.programs || []).map((prog, i) => {
-                const tone = TONE_CLASSES[prog.tone] || TONE_CLASSES.cyan;
+                const isCyan = prog.tone === 'cyan';
+                const iconColor = isCyan ? 'var(--secondary)' : prog.tone === 'pink' ? 'var(--accent)' : 'var(--primary)';
+                const iconBg = isCyan ? 'var(--secondary-subtle)' : prog.tone === 'pink' ? 'var(--accent-subtle)' : 'var(--primary-subtle)';
+
                 return (
-                  <div key={i} className="glass-card flex flex-col">
-                    <div className="flex justify-between mb-6">
-                      <div className={`w-12 h-12 rounded-full ${tone.bg} flex items-center justify-center`}>
-                        <Icon name={prog.icon} size={20} className={tone.text} />
+                  <div key={i} data-reveal="up" data-reveal-delay={String(i * 100)} className="program-card">
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.25rem' }}>
+                      <div style={{ width: '2.75rem', height: '2.75rem', borderRadius: '50%', background: iconBg, color: iconColor, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Icon name={prog.icon} size={20} />
                       </div>
                       {prog.badge && (
-                        <span className={`${tone.bg} ${tone.text} font-semibold`} style={{ fontSize: '0.7rem', padding: '0.25rem 0.5rem', borderRadius: '0.25rem', height: 'fit-content' }}>{prog.badge}</span>
+                        <span style={{ display: 'inline-flex', alignItems: 'center', padding: '0.2rem 0.6rem', borderRadius: 9999, fontSize: '0.7rem', fontWeight: 700, background: iconBg, color: iconColor, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                          {prog.badge}
+                        </span>
                       )}
                     </div>
-                    <h3 className="text-2xl mb-2">{prog.title}</h3>
+                    <h3 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.5rem', color: 'var(--text-primary)' }}>{prog.title}</h3>
                     {prog.formats && (
-                      <div className="flex items-center text-xs mb-4 pb-4" style={{ color: 'var(--text-muted)', borderBottom: '1px solid rgba(255,255,255,0.05)', flexWrap: 'wrap', gap: '0.25rem' }}>
-                        Formats: {prog.formats.split('•').map((f, j) => (
-                          <span key={j}>{j > 0 && <span style={{ margin: '0 0.25rem' }}>•</span>}<strong style={{ color: '#fff' }}>{f.trim()}</strong></span>
-                        ))}
+                      <div className="program-format-bar">
+                        <span style={{ color: 'var(--text-muted)', fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Session:</span>
+                        <strong style={{ color: 'var(--text-secondary)', fontWeight: 600, fontSize: '0.82rem' }}>{prog.formats}</strong>
                       </div>
                     )}
-                    <p className="text-muted text-sm flex-grow mb-6">{prog.description}</p>
-                    <button className="btn btn-secondary w-full" style={{ color: tone.text }}>{prog.ctaLabel || 'Apply Now'}</button>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.65, flexGrow: 1, marginBottom: '1.5rem' }}>{prog.description}</p>
+                    <a href="/syllabus" className="btn btn-secondary" style={{ width: '100%', color: iconColor, borderColor: 'rgba(79,70,229,0.15)', textDecoration: 'none' }}>
+                      View Syllabus <Icon name="arrow-up-right" size={14} />
+                    </a>
                   </div>
                 );
               })}
@@ -434,65 +615,82 @@ export default function HomePageContent({ data }) {
         </section>
       </main>
 
-      {/* ── FOOTER ───────────────────────────────────────── */}
-      <footer style={{ background: 'rgba(7,10,18,1)', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '4rem 0 2rem', position: 'relative', zIndex: 10 }}>
+      {/* ═══════════════════════════════════════════
+          FOOTER
+      ═══════════════════════════════════════════ */}
+      <footer className="site-footer">
         <div className="container">
-          <div className="grid-3 mb-12">
+          <div className="footer-grid">
+            {/* Brand */}
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem' }}>
-                <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--gradient-primary)' }}>
-                  <Icon name="cpu" size={16} className="text-white" />
+              <div className="footer-brand">
+                <div style={{
+                  width: '2rem', height: '2rem', borderRadius: '0.6rem',
+                  background: brand?.logoPath ? 'transparent' : 'var(--gradient-brand)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  boxShadow: brand?.logoPath ? 'none' : '0 4px 10px rgba(79,70,229,0.2)',
+                  flexShrink: 0
+                }}>
+                  {brand?.logoPath ? (
+                    <img src={brand.logoPath} alt="Logo" style={{ width: '100%', height: '100%', borderRadius: 'inherit', objectFit: 'cover' }} />
+                  ) : (
+                    <Icon name="cpu" size={14} style={{ color: 'white' }} />
+                  )}
                 </div>
-                <span className="font-bold text-lg" style={{ color: 'white' }}>
-                  Touchpointe<span style={{ color: 'var(--primary-light)' }}>.digital</span>
+                <span className="footer-brand-text">
+                  {brand?.logoTextPrimary || 'Touchpointe'}<span>{brand?.logoTextAccent || '.digital'}</span>
                 </span>
               </div>
-              {footer.tagline && <p className="text-muted text-sm" style={{ paddingRight: '2rem', marginBottom: '1rem' }}>{footer.tagline}</p>}
+              {footer.tagline && <p className="footer-tagline">{footer.tagline}</p>}
               {footer.registrationBadge && (
-                <div className="inline-flex items-center gap-2 rounded-full font-medium text-xs text-indigo-400 py-1 px-3" style={{ border: '1px solid rgba(99,102,241,0.2)' }}>
+                <div className="footer-reg-badge">
                   <Icon name="award" size={14} />
                   {footer.registrationBadge}
                 </div>
               )}
             </div>
+
             <div>
-              <h4 style={{ color: 'white', marginBottom: '1.5rem' }}>Programs</h4>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <li><a href="#smb" className="nav-link text-muted text-sm">SMB Training</a></li>
-                <li><a href="#students" className="nav-link text-muted text-sm">Student Programs</a></li>
-                <li><a href="#" className="nav-link text-muted text-sm">Corporate Workshops</a></li>
+              <h4 className="footer-heading">Workshop</h4>
+              <ul className="footer-links">
+                <li><Link href="/syllabus" style={{ color: 'inherit', textDecoration: 'none' }}>Workshop Syllabus</Link></li>
+                <li><Link href="/register" style={{ color: 'inherit', textDecoration: 'none' }}>Student Registration</Link></li>
               </ul>
             </div>
+
+            {/* Contact */}
             <div>
-              <h4 style={{ color: 'white', marginBottom: '1.5rem' }}>Contact</h4>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <li className="text-muted text-sm">{footer.email || 'contact@touchpointe.digital'}</li>
-                <li className="text-muted text-sm">{footer.phone || '+91 75580999003'}</li>
+              <h4 className="footer-heading">Contact</h4>
+              <ul className="footer-links">
+                <li><span className="footer-contact-item">{footer.email || 'contact@touchpointe.digital'}</span></li>
+                <li><span className="footer-contact-item">{footer.phone || '+91 75580 99003'}</span></li>
                 <li style={{ marginTop: '1rem' }}>
-                  <button className="btn btn-secondary w-full py-2">Get in Touch</button>
+                  <button className="btn btn-secondary" style={{ background: 'rgba(255,255,255,0.07)', borderColor: 'rgba(255,255,255,0.12)', color: 'white', fontSize: '0.88rem', padding: '0.6rem 1.25rem' }}>
+                    Get in Touch
+                  </button>
                 </li>
               </ul>
             </div>
           </div>
-          <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-            <p className="text-muted text-xs">{footer.copyright || '© 2026 Touchpointe.digital. All rights reserved.'}</p>
-            <div style={{ display: 'flex', gap: '1.5rem' }}>
-              <a href="#" className="text-muted text-xs nav-link">Privacy Policy</a>
-              <a href="#" className="text-muted text-xs nav-link">Terms of Service</a>
+
+          {/* Footer Bottom */}
+          <div className="footer-bottom">
+            <p className="footer-copyright">{footer.copyright || '© 2026 Touchpointe.digital. All rights reserved.'}</p>
+            <div className="footer-legal-links">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
             </div>
           </div>
         </div>
       </footer>
 
-      {/* Mobile nav CSS */}
+      {/* Mobile menu responsive styles */}
       <style>{`
         @media (max-width: 768px) {
           .desktop-menu { display: none !important; }
-          .mobile-menu-btn { display: block !important; }
+          .mobile-menu-btn { display: flex !important; }
           .two-col-layout { grid-template-columns: 1fr !important; }
         }
-        .w-full { width: 100%; }
-        .flex-grow { flex-grow: 1; }
       `}</style>
     </>
   );
